@@ -1,25 +1,25 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+const locales = ['en', 'de', 'fr', 'es', 'it'];
+const defaultLocale = 'en';
+
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-  
-  // List of locales
-  const locales = ['en', 'de', 'fr', 'es', 'it'];
-  
-  // Check if pathname starts with a locale
+  const { pathname } = request.nextUrl;
+
+  // Check if pathname already has a locale
   const hasLocale = locales.some(
-    locale => pathname.startsWith(`/${locale}`) || pathname === `/${locale}`
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
   if (hasLocale) return NextResponse.next();
 
-  // Redirect to /en if no locale
-  return NextResponse.redirect(new URL(`/en${pathname === '/' ? '' : pathname}`, request.url));
+  // Redirect to default locale
+  const url = request.nextUrl.clone();
+  url.pathname = `/${defaultLocale}${pathname}`;
+  return NextResponse.redirect(url);
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|static|favicon.ico|public).*)'],
+  matcher: ['/((?!_next|api|static|favicon\\.ico|public|.*\\..*).*)',],
 };
-
-export const runtime = 'edge';

@@ -1,5 +1,4 @@
 const createNextIntlPlugin = require('next-intl/plugin');
-const webpack = require('webpack');
 
 const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
 
@@ -12,18 +11,6 @@ const nextConfig = {
         hostname: '**',
       },
     ],
-  },
-  
-  webpack: (config, { isServer }) => {
-    // Provide a mock __dirname to satisfy dependencies
-    config.plugins = (config.plugins || []).concat([
-      new webpack.DefinePlugin({
-        __dirname: JSON.stringify('/'),
-        __filename: JSON.stringify('index.js'),
-      })
-    ]);
-    
-    return config;
   },
   
   // Headers for security
