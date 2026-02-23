@@ -23,8 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all countries
   const countries = await dataProvider.getCountries();
 
-  // Country pages
-  const countryEntries: MetadataRoute.Sitemap = countries.flatMap((country) =>
+  // Country pages (exclude countries with 0 clubs — those are noindex)
+  const countryEntries: MetadataRoute.Sitemap = countries.filter((c) => c.clubCount > 0).flatMap((country) =>
     locales.map((locale) => ({
       url: `${BASE_URL}/${locale}/clubs/${country.slug}`,
       lastModified: now,
@@ -36,8 +36,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all cities
   const cities = await dataProvider.getAllCities();
 
-  // City pages
-  const cityEntries: MetadataRoute.Sitemap = cities.flatMap((city) => {
+  // City pages (exclude cities with 0 clubs — those are noindex)
+  const cityEntries: MetadataRoute.Sitemap = cities.filter((city) => city.clubCount > 0).flatMap((city) => {
     const country = countries.find((c) => c.slug === city.countrySlug);
     if (!country) return [];
     

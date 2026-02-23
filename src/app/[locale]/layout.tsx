@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import { MessagesProvider } from '@/lib/i18n/client';
 import { getMessages, setRequestLocale } from '@/lib/i18n/server';
 import { notFound } from 'next/navigation';
-import { locales, type Locale } from '@/lib/i18n/locales';
+import { locales, localeConfig, type Locale } from '@/lib/i18n/locales';
 import { Link } from '@/lib/i18n/routing';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -37,8 +40,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages(locale);
 
   return (
-    <MessagesProvider messages={messages}>
-      <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
+    <html lang={localeConfig[locale].htmlLang} suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
+        <MessagesProvider messages={messages}>
+          <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
         {/* Header */}
         <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,5 +166,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         </footer>
       </div>
     </MessagesProvider>
+      </body>
+    </html>
   );
 }
