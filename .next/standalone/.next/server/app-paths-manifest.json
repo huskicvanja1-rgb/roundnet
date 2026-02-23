@@ -1,0 +1,18 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/api/admin/submissions/route": "app/api/admin/submissions/route.js",
+  "/api/clubs/[slug]/route": "app/api/clubs/[slug]/route.js",
+  "/api/events/route": "app/api/events/route.js",
+  "/api/submissions/route": "app/api/submissions/route.js",
+  "/api/countries/route": "app/api/countries/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/api/clubs/route": "app/api/clubs/route.js",
+  "/admin/submissions/page": "app/admin/submissions/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/[locale]/clubs/page": "app/[locale]/clubs/page.js",
+  "/[locale]/clubs/[countrySlug]/page": "app/[locale]/clubs/[countrySlug]/page.js",
+  "/[locale]/clubs/[countrySlug]/[citySlug]/page": "app/[locale]/clubs/[countrySlug]/[citySlug]/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/club/[clubSlug]/page": "app/[locale]/club/[clubSlug]/page.js"
+}
