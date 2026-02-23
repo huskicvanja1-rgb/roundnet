@@ -1,33 +1,32 @@
-import createMiddleware from 'next-intl/middleware';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-// Inline locales to avoid Edge Runtime import issues on Vercel
 const locales = ['en', 'de', 'fr', 'es', 'it'];
 const defaultLocale = 'en';
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales,
+export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
 
-  // Used when no locale matches
-  defaultLocale,
+  // Check if locale exists in path
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
 
-  // Always use locale prefix (even for default locale)
-  localePrefix: 'always',
-});
+  if (pathnameHasLocale) {
+    return NextResponse.next();
+  }
+
+  // Redirect to default locale if missing
+  return NextResponse.redirect(
+    new URL(`/${defaultLocale}${pathname}`, request.url)
+  );
+}
 
 export const config = {
-  // Match only internationalized pathnames
-  // Skip api routes, static files, and other non-page routes
   matcher: [
-    // Match all pathnames except for
-    // - /api (API routes)
-    // - /_next (Next.js internals)
-    // - /_vercel (Vercel internals)
-    // - /static (static files)
-    // - .*\\..*$ (files with extensions like .js, .css, .png, etc.)
     '/((?!api|_next|_vercel|static|.*\\..*|_next/static|_next/image|favicon.ico).*)',
   ],
 };
 
-// Use Edge Runtime for middleware - most reliable with next-intl
+// Use Edge Runtime
 export const runtime = 'edge';
