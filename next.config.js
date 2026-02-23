@@ -15,6 +15,16 @@ const nextConfig = {
   // Enable static generation for SEO
   output: 'standalone',
   
+  webpack: (config, { isServer }) => {
+    // Fix __dirname is not defined error on Vercel
+    config.node = {
+      ...config.node,
+      __dirname: true,
+      __filename: true,
+    };
+    return config;
+  },
+  
   // Headers for security
   async headers() {
     return [
