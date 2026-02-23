@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { MessagesProvider } from '@/lib/i18n/client';
+import { getMessages, setRequestLocale } from '@/lib/i18n/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/lib/i18n/locales';
 import { Link } from '@/lib/i18n/routing';
@@ -31,13 +31,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   // Enable static rendering
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   // Get messages for the locale
-  const messages = await getMessages();
+  const messages = await getMessages(locale);
 
   return (
-    <NextIntlClientProvider messages={messages}>
+    <MessagesProvider messages={messages}>
       <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
         {/* Header */}
         <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
@@ -160,6 +160,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           </div>
         </footer>
       </div>
-    </NextIntlClientProvider>
+    </MessagesProvider>
   );
 }

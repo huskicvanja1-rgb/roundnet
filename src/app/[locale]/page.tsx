@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from '@/lib/i18n/server';
 import { Link } from '@/lib/i18n/routing';
 import { dataProvider } from '@/lib/data/provider';
 import { generatePageMetadata, generateAlternates, HOME_PATH } from '@/lib/seo/metadata';
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 
 export default async function HomePage({ params }: HomePageProps) {
   const locale = params.locale as Locale;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const t = await getTranslations('home');
   const tNav = await getTranslations('nav');

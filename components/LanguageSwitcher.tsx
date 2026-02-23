@@ -1,8 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
-import { Link } from '@/lib/i18n/routing';
+import { Link, useLocale } from '@/lib/i18n/routing';
 import { locales, localeNames, localeFlags, type Locale } from '@/lib/i18n/locales';
 import { ChevronDown, Globe } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';

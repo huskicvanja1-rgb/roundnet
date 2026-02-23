@@ -1,10 +1,10 @@
-import { createSharedPathnamesNavigation } from 'next-intl/navigation';
-import { locales, defaultLocale } from './locales';
+// Re-export locale-aware Link and useLocale from the client navigation module.
+// Components importing { Link } from '@/lib/i18n/routing' keep working unchanged.
+export { Link, useLocale } from './navigation';
+
+import { locales } from './locales';
 
 export const localePrefix = 'always';
-
-export const { Link, redirect, usePathname, useRouter } =
-  createSharedPathnamesNavigation({ locales, localePrefix });
 
 // Helper to generate locale-prefixed paths
 export function getLocalePath(locale: string, path: string): string {
