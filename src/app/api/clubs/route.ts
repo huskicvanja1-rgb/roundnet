@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { dataProvider } from '@/lib/data/provider';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/clubs - List clubs with filtering
 export async function GET(request: NextRequest) {
   try {
