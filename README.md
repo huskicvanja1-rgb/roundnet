@@ -180,3 +180,4 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) for deta
 ---
 
 Made with ❤️ for the European Roundnet community
+# Redeploy trigger
