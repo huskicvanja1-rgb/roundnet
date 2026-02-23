@@ -1,6 +1,6 @@
-// Temporarily disable next-intl to debug __dirname issue
-// const createNextIntlPlugin = require('next-intl/plugin');
-// const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -14,12 +14,19 @@ const nextConfig = {
   },
   
   webpack: (config, { isServer }) => {
-    // Fix __dirname is not defined error on Vercel
-    config.node = {
-      ...config.node,
-      __dirname: true,
-      __filename: true,
+    // Ignore __dirname errors from dependencies
+    config.ignoreWarnings = [
+      ...(config.ignoreWarnings || []),
+      { module: /node_modules.*/ }
+    ];
+    
+    // Fallback for node globals
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      __dirname: false,
+      __filename: false,
     };
+    
     return config;
   },
   
@@ -68,6 +75,4 @@ const nextConfig = {
   },
 };
 
-// Temporary: export without next-intl plugin to debug
-module.exports = nextConfig;
-// module.exports = withNextIntl(nextConfig);
+module.exports = withNextIntl(nextConfig);
