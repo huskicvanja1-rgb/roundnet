@@ -1,15 +1,10 @@
-import { createNavigation } from 'next-intl/navigation';
-import { defineRouting } from 'next-intl/routing';
+import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales, defaultLocale } from './locales';
 
-export const routing = defineRouting({
-  locales,
-  defaultLocale,
-  localePrefix: 'always',
-});
+export const localePrefix = 'always';
 
 export const { Link, redirect, usePathname, useRouter } =
-  createNavigation(routing);
+  createSharedPathnamesNavigation({ locales, localePrefix });
 
 // Helper to generate locale-prefixed paths
 export function getLocalePath(locale: string, path: string): string {

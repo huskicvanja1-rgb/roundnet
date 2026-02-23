@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { dataProvider } from '@/lib/data/provider';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { generateClubListJsonLd, serializeJsonLd } from '@/lib/seo/jsonld';
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: ClubsPageProps): Promise<Meta
 
 export default async function ClubsPage({ params }: ClubsPageProps) {
   const locale = params.locale as Locale;
-  setRequestLocale(locale);
+  unstable_setRequestLocale(locale);
 
   const t = await getTranslations('home');
   const tBreadcrumbs = await getTranslations('breadcrumbs');

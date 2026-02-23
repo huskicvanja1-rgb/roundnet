@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/lib/i18n/routing';
 import { dataProvider } from '@/lib/data/provider';
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
 
 export default async function CityPage({ params }: CityPageProps) {
   const locale = params.locale as Locale;
-  setRequestLocale(locale);
+  unstable_setRequestLocale(locale);
 
   const city = await dataProvider.getCityBySlug(params.citySlug);
   const country = await dataProvider.getCountryBySlug(params.countrySlug);

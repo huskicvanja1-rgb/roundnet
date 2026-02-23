@@ -51,9 +51,7 @@ const nextConfig = {
   // Rewrites for clean URLs
   async rewrites() {
     return {
-      beforeFiles: [
-        // Language-aware rewrites handled by middleware
-      ],
+      beforeFiles: [],
     };
   },
 };

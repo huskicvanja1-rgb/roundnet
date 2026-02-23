@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/lib/i18n/routing';
 import { dataProvider } from '@/lib/data/provider';
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
 
 export default async function CountryPage({ params }: CountryPageProps) {
   const locale = params.locale as Locale;
-  setRequestLocale(locale);
+  unstable_setRequestLocale(locale);
 
   const country = await dataProvider.getCountryBySlug(params.countrySlug);
 
