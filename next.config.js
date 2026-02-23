@@ -12,8 +12,6 @@ const nextConfig = {
       },
     ],
   },
-  // Enable static generation for SEO
-  output: 'standalone',
   
   webpack: (config, { isServer }) => {
     // Fix __dirname is not defined error on Vercel
