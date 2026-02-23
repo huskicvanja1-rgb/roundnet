@@ -1,4 +1,5 @@
 const createNextIntlPlugin = require('next-intl/plugin');
+const webpack = require('webpack');
 
 const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
 
@@ -14,18 +15,13 @@ const nextConfig = {
   },
   
   webpack: (config, { isServer }) => {
-    // Ignore __dirname errors from dependencies
-    config.ignoreWarnings = [
-      ...(config.ignoreWarnings || []),
-      { module: /node_modules.*/ }
-    ];
-    
-    // Fallback for node globals
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      __dirname: false,
-      __filename: false,
-    };
+    // Provide a mock __dirname to satisfy dependencies
+    config.plugins = (config.plugins || []).concat([
+      new webpack.DefinePlugin({
+        __dirname: JSON.stringify('/'),
+        __filename: JSON.stringify('index.js'),
+      })
+    ]);
     
     return config;
   },
