@@ -3016,7 +3016,6 @@ function normalizeCookie(cookie = {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-var __dirname = "node_modules/next/dist/compiled/@opentelemetry/api";
 
 (()=>{
     "use strict";
@@ -4299,7 +4298,7 @@ var __dirname = "node_modules/next/dist/compiled/@opentelemetry/api";
         }
         return a.exports;
     }
-    if (typeof __nccwpck_require__ !== "undefined") __nccwpck_require__.ab = __dirname + "/";
+    if (typeof __nccwpck_require__ !== "undefined") __nccwpck_require__.ab = "/" + "/";
     var r = {};
     (()=>{
         var e = r;
@@ -4508,11 +4507,10 @@ var __dirname = "node_modules/next/dist/compiled/@opentelemetry/api";
 /***/ ((module) => {
 
 "use strict";
-var __dirname = "node_modules/next/dist/compiled/cookie";
 
 (()=>{
     "use strict";
-    if (typeof __nccwpck_require__ !== "undefined") __nccwpck_require__.ab = __dirname + "/";
+    if (typeof __nccwpck_require__ !== "undefined") __nccwpck_require__.ab = "/" + "/";
     var e = {};
     (()=>{
         var r = e;
