@@ -1,0 +1,253 @@
+{
+  "meta": {
+    "title": "Roundnet Directory Europe - Find Spikeball Clubs Near You",
+    "description": "Discover Roundnet and Spikeball clubs, communities, and events across Europe. Find training sessions, tournaments, and players in your city.",
+    "keywords": "roundnet, spikeball, clubs, europe, find, near me, tournaments, training"
+  },
+  "nav": {
+    "home": "Home",
+    "clubs": "Clubs",
+    "events": "Events",
+    "blog": "Blog",
+    "about": "About",
+    "submit": "Add Your Club",
+    "search": "Search...",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "dashboard": "Dashboard"
+  },
+  "home": {
+    "hero": {
+      "title": "Find Roundnet Clubs in Europe",
+      "subtitle": "Connect with Spikeball communities, join training sessions, and compete in tournaments near you.",
+      "cta": "Find Clubs Near Me",
+      "searchPlaceholder": "Enter your city or country..."
+    },
+    "stats": {
+      "clubs": "Clubs",
+      "countries": "Countries",
+      "events": "Events",
+      "players": "Active Players"
+    },
+    "featured": {
+      "title": "Featured Clubs",
+      "viewAll": "View All Clubs"
+    },
+    "upcoming": {
+      "title": "Upcoming Events",
+      "viewAll": "View All Events"
+    },
+    "cta": {
+      "title": "Know a Club That's Missing?",
+      "subtitle": "Help us build the most comprehensive Roundnet directory in Europe.",
+      "button": "Submit a Club"
+    }
+  },
+  "clubs": {
+    "title": "Roundnet Clubs",
+    "subtitle": "Find your local Spikeball community",
+    "filters": {
+      "country": "Country",
+      "city": "City",
+      "type": "Club Type",
+      "features": "Features",
+      "all": "All",
+      "official": "Official Clubs",
+      "community": "Communities",
+      "university": "University Clubs",
+      "indoor": "Indoor",
+      "outdoor": "Outdoor",
+      "beginners": "Beginners Welcome",
+      "flinta": "FLINTA* Friendly",
+      "tournaments": "Tournaments",
+      "clear": "Clear Filters"
+    },
+    "sort": {
+      "name": "Name",
+      "newest": "Newest",
+      "distance": "Distance"
+    },
+    "noResults": "No clubs found matching your criteria.",
+    "tryAnother": "Try adjusting your filters or search in a different area.",
+    "viewOnMap": "View on Map",
+    "viewList": "View List"
+  },
+  "club": {
+    "about": "About",
+    "location": "Location",
+    "contact": "Contact",
+    "schedule": "Training Schedule",
+    "features": "Features",
+    "reviews": "Reviews",
+    "events": "Upcoming Events",
+    "website": "Visit Website",
+    "email": "Send Email",
+    "directions": "Get Directions",
+    "share": "Share",
+    "report": "Report Issue",
+    "verified": "Verified Club",
+    "official": "Federation Member",
+    "noSchedule": "No regular training schedule available.",
+    "contactClub": "Contact this club for more information."
+  },
+  "submit": {
+    "title": "Submit Your Club",
+    "subtitle": "Add your Roundnet club or community to our directory. All submissions are reviewed before publishing.",
+    "form": {
+      "name": "Club Name",
+      "namePlaceholder": "Enter your club name",
+      "country": "Country",
+      "city": "City",
+      "cityPlaceholder": "Enter city name",
+      "description": "Description",
+      "descriptionPlaceholder": "Tell us about your club, when you meet, skill levels welcome, etc.",
+      "website": "Website",
+      "websitePlaceholder": "https://yourclub.com",
+      "email": "Contact Email",
+      "emailPlaceholder": "contact@yourclub.com",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "+33 1 23 45 67 89",
+      "type": "Club Type",
+      "features": "Features",
+      "contactName": "Your Name",
+      "contactNamePlaceholder": "For verification purposes",
+      "contactEmail": "Your Email",
+      "contactEmailPlaceholder": "We'll notify you when published",
+      "privacy": "Privacy Consent",
+      "privacyText": "I confirm that I have permission to submit this club's information and consent to its publication on this directory. Email and phone will only be displayed with explicit permission.",
+      "submit": "Submit Club",
+      "submitting": "Submitting..."
+    },
+    "success": {
+      "title": "Thank You!",
+      "message": "Your submission has been received. Our team will review it and publish it within 48 hours.",
+      "another": "Submit Another Club"
+    },
+    "errors": {
+      "required": "This field is required",
+      "email": "Please enter a valid email",
+      "url": "Please enter a valid URL",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "events": {
+    "title": "Roundnet Events",
+    "subtitle": "Tournaments, training sessions, and meetups across Europe",
+    "upcoming": "Upcoming",
+    "past": "Past Events",
+    "filters": {
+      "type": "Event Type",
+      "tournament": "Tournament",
+      "training": "Training",
+      "social": "Social",
+      "pickup": "Pick-up Game"
+    },
+    "noEvents": "No upcoming events found.",
+    "checkBack": "Check back soon or submit your own event."
+  },
+  "event": {
+    "date": "Date",
+    "time": "Time",
+    "location": "Location",
+    "organizer": "Organizer",
+    "format": "Format",
+    "price": "Price",
+    "register": "Register",
+    "addToCalendar": "Add to Calendar",
+    "share": "Share Event"
+  },
+  "blog": {
+    "title": "Roundnet Blog",
+    "subtitle": "Tips, techniques, news, and stories from the European Roundnet community",
+    "readMore": "Read More",
+    "categories": "Categories",
+    "recentPosts": "Recent Posts",
+    "relatedPosts": "Related Posts",
+    "share": "Share this article"
+  },
+  "about": {
+    "title": "About Roundnet Directory",
+    "mission": {
+      "title": "Our Mission",
+      "text": "We're building the most comprehensive directory of Roundnet clubs and communities in Europe. Our goal is to make it easy for anyone to find and join their local Spikeball community."
+    },
+    "contribute": {
+      "title": "Contribute",
+      "text": "This directory is community-powered. Help us grow by submitting clubs, suggesting corrections, or contributing translations."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "text": "Have questions or suggestions? We'd love to hear from you."
+    }
+  },
+  "footer": {
+    "tagline": "Finding your Roundnet community across Europe",
+    "clubs": "Clubs",
+    "events": "Events",
+    "blog": "Blog",
+    "submit": "Submit Club",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© {year} Roundnet Directory Europe. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try Again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "share": "Share",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "map": "Map",
+    "list": "List",
+    "free": "Free",
+    "members": "Members",
+    "distance": "{distance} km away"
+  },
+  "features": {
+    "INDOOR": "Indoor",
+    "OUTDOOR": "Outdoor",
+    "BEGINNERS_WELCOME": "Beginners Welcome",
+    "ADVANCED_TRAINING": "Advanced Training",
+    "FLINTA_FRIENDLY": "FLINTA* Friendly",
+    "WHEELCHAIR_ACCESSIBLE": "Wheelchair Accessible",
+    "EQUIPMENT_PROVIDED": "Equipment Provided",
+    "TOURNAMENTS": "Tournaments",
+    "YOUTH_PROGRAM": "Youth Program",
+    "COACHING": "Coaching",
+    "SOCIAL_EVENTS": "Social Events",
+    "FREE_TO_JOIN": "Free to Join",
+    "MEMBERSHIP_REQUIRED": "Membership Required"
+  },
+  "clubTypes": {
+    "OFFICIAL_CLUB": "Official Club",
+    "COMMUNITY": "Community",
+    "UNIVERSITY": "University Club",
+    "SCHOOL": "School Club",
+    "SPORTS_CENTER": "Sports Center"
+  },
+  "days": {
+    "0": "Sunday",
+    "1": "Monday",
+    "2": "Tuesday",
+    "3": "Wednesday",
+    "4": "Thursday",
+    "5": "Friday",
+    "6": "Saturday"
+  }
+}

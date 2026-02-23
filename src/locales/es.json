@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "title": "Directorio Roundnet Europa - Encuentra Clubes de Spikeball Cerca de Ti",
+    "description": "Descubre clubes, comunidades y eventos de Roundnet y Spikeball en toda Europa. Encuentra entrenamientos, torneos y jugadores en tu ciudad.",
+    "keywords": "roundnet, spikeball, clubes, europa, encontrar, cerca de mí, torneos, entrenamientos"
+  },
+  "nav": {
+    "home": "Inicio",
+    "clubs": "Clubes",
+    "events": "Eventos",
+    "blog": "Blog",
+    "about": "Acerca de",
+    "submit": "Añadir tu Club",
+    "search": "Buscar...",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "dashboard": "Panel"
+  },
+  "home": {
+    "hero": {
+      "title": "Encuentra Clubes de Roundnet en Europa",
+      "subtitle": "Conéctate con comunidades de Spikeball, únete a entrenamientos y compite en torneos cerca de ti.",
+      "cta": "Encontrar Clubes Cerca",
+      "searchPlaceholder": "Introduce tu ciudad o país..."
+    },
+    "stats": {
+      "clubs": "Clubes",
+      "countries": "Países",
+      "events": "Eventos",
+      "players": "Jugadores Activos"
+    },
+    "featured": {
+      "title": "Clubes Destacados",
+      "viewAll": "Ver Todos los Clubes"
+    },
+    "upcoming": {
+      "title": "Próximos Eventos",
+      "viewAll": "Ver Todos los Eventos"
+    },
+    "cta": {
+      "title": "¿Conoces un Club que Falta?",
+      "subtitle": "Ayúdanos a construir el directorio de Roundnet más completo de Europa.",
+      "button": "Enviar un Club"
+    }
+  },
+  "clubs": {
+    "title": "Clubes de Roundnet",
+    "subtitle": "Encuentra tu comunidad local de Spikeball",
+    "filters": {
+      "country": "País",
+      "city": "Ciudad",
+      "type": "Tipo de Club",
+      "features": "Características",
+      "all": "Todos",
+      "official": "Clubes Oficiales",
+      "community": "Comunidades",
+      "university": "Clubes Universitarios",
+      "indoor": "Interior",
+      "outdoor": "Exterior",
+      "beginners": "Principiantes Bienvenidos",
+      "flinta": "FLINTA* Amigable",
+      "tournaments": "Torneos",
+      "clear": "Limpiar Filtros"
+    },
+    "sort": {
+      "name": "Nombre",
+      "newest": "Más Recientes",
+      "distance": "Distancia"
+    },
+    "noResults": "No se encontraron clubes que coincidan con tus criterios.",
+    "tryAnother": "Intenta ajustar tus filtros o buscar en otra área.",
+    "viewOnMap": "Ver en Mapa",
+    "viewList": "Ver Lista"
+  },
+  "club": {
+    "about": "Acerca de",
+    "location": "Ubicación",
+    "contact": "Contacto",
+    "schedule": "Horario de Entrenamiento",
+    "features": "Características",
+    "reviews": "Reseñas",
+    "events": "Próximos Eventos",
+    "website": "Visitar Web",
+    "email": "Enviar Email",
+    "directions": "Cómo Llegar",
+    "share": "Compartir",
+    "report": "Reportar Problema",
+    "verified": "Club Verificado",
+    "official": "Miembro de Federación",
+    "noSchedule": "No hay horario regular de entrenamiento disponible.",
+    "contactClub": "Contacta con este club para más información."
+  },
+  "submit": {
+    "title": "Envía tu Club",
+    "subtitle": "Añade tu club o comunidad de Roundnet a nuestro directorio. Todas las envíos son revisados antes de publicarse.",
+    "form": {
+      "name": "Nombre del Club",
+      "namePlaceholder": "Introduce el nombre de tu club",
+      "country": "País",
+      "city": "Ciudad",
+      "cityPlaceholder": "Introduce el nombre de la ciudad",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Cuéntanos sobre tu club, cuándo os reunís, niveles de habilidad, etc.",
+      "website": "Sitio Web",
+      "websitePlaceholder": "https://tuclub.com",
+      "email": "Email de Contacto",
+      "emailPlaceholder": "contacto@tuclub.com",
+      "phone": "Teléfono (opcional)",
+      "phonePlaceholder": "+34 912 345 678",
+      "type": "Tipo de Club",
+      "features": "Características",
+      "contactName": "Tu Nombre",
+      "contactNamePlaceholder": "Para fines de verificación",
+      "contactEmail": "Tu Email",
+      "contactEmailPlaceholder": "Te notificaremos cuando se publique",
+      "privacy": "Consentimiento de Privacidad",
+      "privacyText": "Confirmo que tengo permiso para enviar la información de este club y consiento su publicación en este directorio.",
+      "submit": "Enviar Club",
+      "submitting": "Enviando..."
+    },
+    "success": {
+      "title": "¡Gracias!",
+      "message": "Tu envío ha sido recibido. Nuestro equipo lo revisará y lo publicará en 48 horas.",
+      "another": "Enviar Otro Club"
+    },
+    "errors": {
+      "required": "Este campo es obligatorio",
+      "email": "Por favor introduce un email válido",
+      "url": "Por favor introduce una URL válida",
+      "generic": "Algo salió mal. Por favor inténtalo de nuevo."
+    }
+  },
+  "events": {
+    "title": "Eventos de Roundnet",
+    "subtitle": "Torneos, entrenamientos y encuentros en toda Europa",
+    "upcoming": "Próximos",
+    "past": "Eventos Pasados",
+    "filters": {
+      "type": "Tipo de Evento",
+      "tournament": "Torneo",
+      "training": "Entrenamiento",
+      "social": "Social",
+      "pickup": "Juego Abierto"
+    },
+    "noEvents": "No se encontraron eventos próximos.",
+    "checkBack": "Vuelve pronto o envía tu propio evento."
+  },
+  "event": {
+    "date": "Fecha",
+    "time": "Hora",
+    "location": "Ubicación",
+    "organizer": "Organizador",
+    "format": "Formato",
+    "price": "Precio",
+    "register": "Registrarse",
+    "addToCalendar": "Añadir al Calendario",
+    "share": "Compartir Evento"
+  },
+  "footer": {
+    "tagline": "Encontrando tu comunidad de Roundnet en Europa",
+    "clubs": "Clubes",
+    "events": "Eventos",
+    "blog": "Blog",
+    "submit": "Enviar Club",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "copyright": "© {year} Roundnet Directory Europe. Todos los derechos reservados."
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "retry": "Reintentar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "view": "Ver",
+    "close": "Cerrar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "showMore": "Mostrar Más",
+    "showLess": "Mostrar Menos",
+    "share": "Compartir",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "map": "Mapa",
+    "list": "Lista",
+    "free": "Gratis",
+    "members": "Miembros",
+    "distance": "a {distance} km"
+  },
+  "features": {
+    "INDOOR": "Interior",
+    "OUTDOOR": "Exterior",
+    "BEGINNERS_WELCOME": "Principiantes Bienvenidos",
+    "ADVANCED_TRAINING": "Entrenamiento Avanzado",
+    "FLINTA_FRIENDLY": "FLINTA* Amigable",
+    "WHEELCHAIR_ACCESSIBLE": "Accesible en Silla de Ruedas",
+    "EQUIPMENT_PROVIDED": "Equipamiento Proporcionado",
+    "TOURNAMENTS": "Torneos",
+    "YOUTH_PROGRAM": "Programa Juvenil",
+    "COACHING": "Entrenadores",
+    "SOCIAL_EVENTS": "Eventos Sociales",
+    "FREE_TO_JOIN": "Gratuito",
+    "MEMBERSHIP_REQUIRED": "Membresía Requerida"
+  },
+  "clubTypes": {
+    "OFFICIAL_CLUB": "Club Oficial",
+    "COMMUNITY": "Comunidad",
+    "UNIVERSITY": "Club Universitario",
+    "SCHOOL": "Club Escolar",
+    "SPORTS_CENTER": "Centro Deportivo"
+  },
+  "days": {
+    "0": "Domingo",
+    "1": "Lunes",
+    "2": "Martes",
+    "3": "Miércoles",
+    "4": "Jueves",
+    "5": "Viernes",
+    "6": "Sábado"
+  }
+}

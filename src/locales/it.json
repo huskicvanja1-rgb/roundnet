@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "title": "Directory Roundnet Europa - Trova Club di Spikeball Vicino a Te",
+    "description": "Scopri club, community ed eventi di Roundnet e Spikeball in tutta Europa. Trova allenamenti, tornei e giocatori nella tua città.",
+    "keywords": "roundnet, spikeball, club, europa, trova, vicino a me, tornei, allenamenti"
+  },
+  "nav": {
+    "home": "Home",
+    "clubs": "Club",
+    "events": "Eventi",
+    "blog": "Blog",
+    "about": "Chi Siamo",
+    "submit": "Aggiungi il Tuo Club",
+    "search": "Cerca...",
+    "signIn": "Accedi",
+    "signOut": "Esci",
+    "dashboard": "Dashboard"
+  },
+  "home": {
+    "hero": {
+      "title": "Trova Club di Roundnet in Europa",
+      "subtitle": "Connettiti con le community di Spikeball, partecipa agli allenamenti e gareggia nei tornei vicino a te.",
+      "cta": "Trova Club Vicini",
+      "searchPlaceholder": "Inserisci la tua città o paese..."
+    },
+    "stats": {
+      "clubs": "Club",
+      "countries": "Paesi",
+      "events": "Eventi",
+      "players": "Giocatori Attivi"
+    },
+    "featured": {
+      "title": "Club in Evidenza",
+      "viewAll": "Vedi Tutti i Club"
+    },
+    "upcoming": {
+      "title": "Prossimi Eventi",
+      "viewAll": "Vedi Tutti gli Eventi"
+    },
+    "cta": {
+      "title": "Conosci un Club che Manca?",
+      "subtitle": "Aiutaci a costruire la directory di Roundnet più completa d'Europa.",
+      "button": "Invia un Club"
+    }
+  },
+  "clubs": {
+    "title": "Club di Roundnet",
+    "subtitle": "Trova la tua community locale di Spikeball",
+    "filters": {
+      "country": "Paese",
+      "city": "Città",
+      "type": "Tipo di Club",
+      "features": "Caratteristiche",
+      "all": "Tutti",
+      "official": "Club Ufficiali",
+      "community": "Community",
+      "university": "Club Universitari",
+      "indoor": "Indoor",
+      "outdoor": "Outdoor",
+      "beginners": "Principianti Benvenuti",
+      "flinta": "FLINTA* Friendly",
+      "tournaments": "Tornei",
+      "clear": "Cancella Filtri"
+    },
+    "sort": {
+      "name": "Nome",
+      "newest": "Più Recenti",
+      "distance": "Distanza"
+    },
+    "noResults": "Nessun club trovato con i tuoi criteri.",
+    "tryAnother": "Prova a modificare i filtri o cerca in un'altra zona.",
+    "viewOnMap": "Vedi sulla Mappa",
+    "viewList": "Vedi Lista"
+  },
+  "club": {
+    "about": "Chi Siamo",
+    "location": "Posizione",
+    "contact": "Contatti",
+    "schedule": "Orari Allenamenti",
+    "features": "Caratteristiche",
+    "reviews": "Recensioni",
+    "events": "Prossimi Eventi",
+    "website": "Visita il Sito",
+    "email": "Invia Email",
+    "directions": "Indicazioni",
+    "share": "Condividi",
+    "report": "Segnala Problema",
+    "verified": "Club Verificato",
+    "official": "Membro Federazione",
+    "noSchedule": "Nessun orario di allenamento regolare disponibile.",
+    "contactClub": "Contatta questo club per maggiori informazioni."
+  },
+  "submit": {
+    "title": "Invia il Tuo Club",
+    "subtitle": "Aggiungi il tuo club o community di Roundnet alla nostra directory. Tutte le proposte vengono revisionate prima della pubblicazione.",
+    "form": {
+      "name": "Nome del Club",
+      "namePlaceholder": "Inserisci il nome del tuo club",
+      "country": "Paese",
+      "city": "Città",
+      "cityPlaceholder": "Inserisci il nome della città",
+      "description": "Descrizione",
+      "descriptionPlaceholder": "Raccontaci del tuo club, quando vi incontrate, livelli di abilità, ecc.",
+      "website": "Sito Web",
+      "websitePlaceholder": "https://tuoclub.it",
+      "email": "Email di Contatto",
+      "emailPlaceholder": "contatto@tuoclub.it",
+      "phone": "Telefono (opzionale)",
+      "phonePlaceholder": "+39 02 1234567",
+      "type": "Tipo di Club",
+      "features": "Caratteristiche",
+      "contactName": "Il Tuo Nome",
+      "contactNamePlaceholder": "Per scopi di verifica",
+      "contactEmail": "La Tua Email",
+      "contactEmailPlaceholder": "Ti avviseremo quando sarà pubblicato",
+      "privacy": "Consenso Privacy",
+      "privacyText": "Confermo di avere il permesso di inviare le informazioni di questo club e acconsento alla sua pubblicazione in questa directory.",
+      "submit": "Invia Club",
+      "submitting": "Invio in corso..."
+    },
+    "success": {
+      "title": "Grazie!",
+      "message": "La tua proposta è stata ricevuta. Il nostro team la esaminerà e la pubblicherà entro 48 ore.",
+      "another": "Invia un Altro Club"
+    },
+    "errors": {
+      "required": "Questo campo è obbligatorio",
+      "email": "Inserisci un'email valida",
+      "url": "Inserisci un URL valido",
+      "generic": "Qualcosa è andato storto. Riprova."
+    }
+  },
+  "events": {
+    "title": "Eventi Roundnet",
+    "subtitle": "Tornei, allenamenti e ritrovi in tutta Europa",
+    "upcoming": "Prossimi",
+    "past": "Eventi Passati",
+    "filters": {
+      "type": "Tipo di Evento",
+      "tournament": "Torneo",
+      "training": "Allenamento",
+      "social": "Social",
+      "pickup": "Partita Aperta"
+    },
+    "noEvents": "Nessun evento prossimo trovato.",
+    "checkBack": "Torna presto o invia il tuo evento."
+  },
+  "event": {
+    "date": "Data",
+    "time": "Ora",
+    "location": "Luogo",
+    "organizer": "Organizzatore",
+    "format": "Formato",
+    "price": "Prezzo",
+    "register": "Registrati",
+    "addToCalendar": "Aggiungi al Calendario",
+    "share": "Condividi Evento"
+  },
+  "footer": {
+    "tagline": "Trova la tua community di Roundnet in Europa",
+    "clubs": "Club",
+    "events": "Eventi",
+    "blog": "Blog",
+    "submit": "Invia Club",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "privacy": "Privacy Policy",
+    "terms": "Termini di Servizio",
+    "copyright": "© {year} Roundnet Directory Europe. Tutti i diritti riservati."
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore",
+    "retry": "Riprova",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "view": "Visualizza",
+    "close": "Chiudi",
+    "back": "Indietro",
+    "next": "Avanti",
+    "previous": "Precedente",
+    "showMore": "Mostra di Più",
+    "showLess": "Mostra di Meno",
+    "share": "Condividi",
+    "copy": "Copia",
+    "copied": "Copiato!",
+    "search": "Cerca",
+    "filter": "Filtra",
+    "sort": "Ordina",
+    "map": "Mappa",
+    "list": "Lista",
+    "free": "Gratuito",
+    "members": "Membri",
+    "distance": "a {distance} km"
+  },
+  "features": {
+    "INDOOR": "Indoor",
+    "OUTDOOR": "Outdoor",
+    "BEGINNERS_WELCOME": "Principianti Benvenuti",
+    "ADVANCED_TRAINING": "Allenamento Avanzato",
+    "FLINTA_FRIENDLY": "FLINTA* Friendly",
+    "WHEELCHAIR_ACCESSIBLE": "Accessibile in Sedia a Rotelle",
+    "EQUIPMENT_PROVIDED": "Attrezzatura Fornita",
+    "TOURNAMENTS": "Tornei",
+    "YOUTH_PROGRAM": "Programma Giovani",
+    "COACHING": "Coaching",
+    "SOCIAL_EVENTS": "Eventi Sociali",
+    "FREE_TO_JOIN": "Gratuito",
+    "MEMBERSHIP_REQUIRED": "Iscrizione Richiesta"
+  },
+  "clubTypes": {
+    "OFFICIAL_CLUB": "Club Ufficiale",
+    "COMMUNITY": "Community",
+    "UNIVERSITY": "Club Universitario",
+    "SCHOOL": "Club Scolastico",
+    "SPORTS_CENTER": "Centro Sportivo"
+  },
+  "days": {
+    "0": "Domenica",
+    "1": "Lunedì",
+    "2": "Martedì",
+    "3": "Mercoledì",
+    "4": "Giovedì",
+    "5": "Venerdì",
+    "6": "Sabato"
+  }
+}

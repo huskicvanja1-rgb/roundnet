@@ -1,0 +1,620 @@
+// Prisma Schema for Roundnet Directory
+// PostgreSQL with PostGIS extension for geospatial queries
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [postgis]
+}
+
+// ============================================
+// USER & AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+  passwordHash  String?
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  accounts      Account[]
+  sessions      Session[]
+  clubsManaged  ClubAdmin[]
+  reviews       Review[]
+  submissions   ClubSubmission[]
+  eventRsvps    EventRsvp[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+enum UserRole {
+  USER
+  CLUB_ADMIN
+  MODERATOR
+  ADMIN
+}
+
+// ============================================
+// GEOGRAPHY
+// ============================================
+
+model Country {
+  id           String   @id @default(cuid())
+  code         String   @unique // ISO 3166-1 alpha-2 (FR, DE, IT, etc.)
+  name         Json     // Translations: { en: "France", fr: "France", de: "Frankreich" }
+  slug         String   @unique
+  flagEmoji    String?
+  federation   Federation?
+  regions      Region[]
+  clubs        Club[]
+  events       Event[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("countries")
+}
+
+model Region {
+  id        String   @id @default(cuid())
+  name      Json     // Translations
+  slug      String
+  countryId String
+  country   Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  cities    City[]
+  clubs     Club[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([countryId, slug])
+  @@map("regions")
+}
+
+model City {
+  id        String   @id @default(cuid())
+  name      Json     // Translations
+  slug      String
+  regionId  String?
+  region    Region?  @relation(fields: [regionId], references: [id], onDelete: SetNull)
+  latitude  Float?
+  longitude Float?
+  clubs     Club[]
+  events    Event[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([regionId, slug])
+  @@index([latitude, longitude])
+  @@map("cities")
+}
+
+// ============================================
+// FEDERATIONS & CLUBS
+// ============================================
+
+model Federation {
+  id              String   @id @default(cuid())
+  name            Json     // Translations
+  countryId       String   @unique
+  country         Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  website         String?
+  email           String?
+  phone           String?
+  description     Json?    // Translations
+  logoUrl         String?
+  socialLinks     Json?    // { facebook, instagram, twitter, youtube }
+  irfMember       Boolean  @default(false)
+  irfMemberSince  DateTime?
+  clubs           Club[]
+  lastScrapedAt   DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("federations")
+}
+
+model Club {
+  id                String       @id @default(cuid())
+  name              String
+  slug              String
+  description       Json?        // Translations
+  shortDescription  Json?        // Translations (for listings)
+  
+  // Location
+  countryId         String
+  country           Country      @relation(fields: [countryId], references: [id])
+  regionId          String?
+  region            Region?      @relation(fields: [regionId], references: [id])
+  cityId            String?
+  city              City?        @relation(fields: [cityId], references: [id])
+  address           String?
+  latitude          Float?
+  longitude         Float?
+  
+  // Contact & Social
+  website           String?
+  email             String?
+  phone             String?
+  socialLinks       Json?        // { facebook, instagram, tiktok, discord }
+  
+  // Classification
+  type              ClubType     @default(COMMUNITY)
+  status            ClubStatus   @default(PENDING)
+  isVerified        Boolean      @default(false)
+  federationId      String?
+  federation        Federation?  @relation(fields: [federationId], references: [id])
+  
+  // Features
+  features          ClubFeature[]
+  playStyle         PlayStyle[]
+  
+  // Media
+  logoUrl           String?
+  coverImageUrl     String?
+  images            ClubImage[]
+  
+  // Stats
+  memberCount       Int?
+  foundedYear       Int?
+  
+  // Privacy & GDPR
+  showEmail         Boolean      @default(false)
+  showPhone         Boolean      @default(false)
+  privacyConsent    Boolean      @default(false)
+  privacyConsentAt  DateTime?
+  
+  // Metadata
+  sourceUrl         String?      // Original source for scraped data
+  sourceId          String?      // ID from source system
+  lastScrapedAt     DateTime?
+  
+  // Relations
+  admins            ClubAdmin[]
+  reviews           Review[]
+  events            Event[]
+  trainingSchedules TrainingSchedule[]
+  
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  @@unique([countryId, slug])
+  @@index([latitude, longitude])
+  @@index([type, status])
+  @@index([countryId, cityId])
+  @@map("clubs")
+}
+
+model ClubImage {
+  id        String   @id @default(cuid())
+  clubId    String
+  club      Club     @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  url       String
+  alt       Json?    // Translations
+  isPrimary Boolean  @default(false)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@map("club_images")
+}
+
+model ClubAdmin {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clubId    String
+  club      Club     @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  role      String   @default("admin") // admin, editor
+  createdAt DateTime @default(now())
+
+  @@unique([userId, clubId])
+  @@map("club_admins")
+}
+
+model ClubSubmission {
+  id                String           @id @default(cuid())
+  name              String
+  description       String?
+  countryCode       String
+  city              String
+  address           String?
+  latitude          Float?
+  longitude         Float?
+  website           String?
+  email             String
+  phone             String?
+  type              ClubType         @default(COMMUNITY)
+  features          Json?            // Array of features
+  contactName       String
+  contactEmail      String
+  privacyConsent    Boolean
+  status            SubmissionStatus @default(PENDING)
+  reviewedBy        String?
+  reviewedAt        DateTime?
+  reviewNotes       String?
+  submittedBy       String?
+  submitter         User?            @relation(fields: [submittedBy], references: [id])
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  @@map("club_submissions")
+}
+
+enum ClubType {
+  OFFICIAL_CLUB     // Registered with federation
+  COMMUNITY         // Informal community/pick-up group
+  UNIVERSITY        // University/college club
+  SCHOOL            // High school/secondary school
+  SPORTS_CENTER     // Part of a larger sports center
+}
+
+enum ClubStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+  REJECTED
+}
+
+enum SubmissionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  NEEDS_INFO
+}
+
+enum ClubFeature {
+  INDOOR
+  OUTDOOR
+  BEGINNERS_WELCOME
+  ADVANCED_TRAINING
+  FLINTA_FRIENDLY      // Welcomes women, non-binary, trans players
+  WHEELCHAIR_ACCESSIBLE
+  EQUIPMENT_PROVIDED
+  TOURNAMENTS
+  YOUTH_PROGRAM
+  COACHING
+  SOCIAL_EVENTS
+  FREE_TO_JOIN
+  MEMBERSHIP_REQUIRED
+}
+
+enum PlayStyle {
+  COMPETITIVE
+  RECREATIONAL
+  MIXED
+}
+
+// ============================================
+// TRAINING SCHEDULES
+// ============================================
+
+model TrainingSchedule {
+  id          String    @id @default(cuid())
+  clubId      String
+  club        Club      @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  dayOfWeek   Int       // 0 = Sunday, 1 = Monday, etc.
+  startTime   String    // HH:mm format
+  endTime     String    // HH:mm format
+  location    String?
+  description Json?     // Translations
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("training_schedules")
+}
+
+// ============================================
+// EVENTS
+// ============================================
+
+model Event {
+  id              String        @id @default(cuid())
+  name            Json          // Translations
+  slug            String
+  description     Json?         // Translations
+  shortDescription Json?        // Translations
+  
+  // Date & Time
+  startDate       DateTime
+  endDate         DateTime?
+  isAllDay        Boolean       @default(false)
+  timezone        String        @default("Europe/Paris")
+  
+  // Location
+  countryId       String
+  country         Country       @relation(fields: [countryId], references: [id])
+  cityId          String?
+  city            City?         @relation(fields: [cityId], references: [id])
+  venue           String?
+  address         String?
+  latitude        Float?
+  longitude       Float?
+  isOnline        Boolean       @default(false)
+  
+  // Organization
+  organizerId     String?
+  organizer       Club?         @relation(fields: [organizerId], references: [id])
+  organizerName   String?       // For external organizers
+  
+  // Details
+  type            EventType
+  format          EventFormat?
+  maxParticipants Int?
+  registrationUrl String?
+  website         String?
+  price           String?       // Free text to handle different currencies/formats
+  
+  // Media
+  imageUrl        String?
+  
+  // Status
+  status          EventStatus   @default(UPCOMING)
+  isFeatured      Boolean       @default(false)
+  
+  // Metadata
+  sourceUrl       String?
+  sourceId        String?
+  
+  // Relations
+  rsvps           EventRsvp[]
+  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@unique([countryId, slug, startDate])
+  @@index([startDate, status])
+  @@index([type, countryId])
+  @@map("events")
+}
+
+model EventRsvp {
+  id        String     @id @default(cuid())
+  eventId   String
+  event     Event      @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status    RsvpStatus @default(INTERESTED)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@unique([eventId, userId])
+  @@map("event_rsvps")
+}
+
+enum EventType {
+  TOURNAMENT
+  TRAINING
+  WORKSHOP
+  SOCIAL
+  PICKUP_GAME
+  LEAGUE_MATCH
+  CHAMPIONSHIP
+  OTHER
+}
+
+enum EventFormat {
+  SINGLES
+  DOUBLES
+  MIXED
+  TEAM
+  OPEN
+}
+
+enum EventStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELLED
+  POSTPONED
+}
+
+enum RsvpStatus {
+  INTERESTED
+  GOING
+  NOT_GOING
+}
+
+// ============================================
+// REVIEWS & RATINGS
+// ============================================
+
+model Review {
+  id        String       @id @default(cuid())
+  clubId    String
+  club      Club         @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rating    Int          // 1-5
+  title     String?
+  content   String?
+  status    ReviewStatus @default(PENDING)
+  isVerified Boolean     @default(false) // Verified attendee
+  
+  // Detailed ratings
+  friendliness    Int?   // 1-5
+  organization    Int?   // 1-5
+  facilities      Int?   // 1-5
+  valueForMoney   Int?   // 1-5
+  
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@unique([clubId, userId])
+  @@index([clubId, status])
+  @@map("reviews")
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  FLAGGED
+}
+
+// ============================================
+// BLOG & CONTENT
+// ============================================
+
+model BlogPost {
+  id              String          @id @default(cuid())
+  title           Json            // Translations
+  slug            String          @unique
+  excerpt         Json?           // Translations
+  content         Json            // Translations (Markdown/HTML)
+  featuredImage   String?
+  
+  // SEO
+  metaTitle       Json?           // Translations
+  metaDescription Json?           // Translations
+  
+  // Organization
+  categoryId      String?
+  category        BlogCategory?   @relation(fields: [categoryId], references: [id])
+  tags            BlogTag[]
+  
+  // Author
+  authorId        String
+  authorName      String?
+  
+  // Status
+  status          PostStatus      @default(DRAFT)
+  publishedAt     DateTime?
+  
+  // Related
+  relatedClubIds  String[]        // Array of club IDs to link
+  relatedCountries String[]       // Array of country codes
+  
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@index([status, publishedAt])
+  @@map("blog_posts")
+}
+
+model BlogCategory {
+  id        String     @id @default(cuid())
+  name      Json       // Translations
+  slug      String     @unique
+  posts     BlogPost[]
+  createdAt DateTime   @default(now())
+
+  @@map("blog_categories")
+}
+
+model BlogTag {
+  id        String     @id @default(cuid())
+  name      Json       // Translations
+  slug      String     @unique
+  posts     BlogPost[]
+  createdAt DateTime   @default(now())
+
+  @@map("blog_tags")
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+// ============================================
+// ANALYTICS & TRACKING
+// ============================================
+
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  referrer  String?
+  userAgent String?
+  country   String?
+  clubId    String?
+  eventId   String?
+  sessionId String?
+  createdAt DateTime @default(now())
+
+  @@index([path, createdAt])
+  @@index([clubId, createdAt])
+  @@map("page_views")
+}
+
+// ============================================
+// PARTNER FINDER (Future Feature)
+// ============================================
+
+model PlayerProfile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  displayName     String
+  bio             String?
+  skillLevel      SkillLevel
+  preferredPlay   PlayStyle[]
+  availableDays   Int[]    // 0-6 for days of week
+  latitude        Float?
+  longitude       Float?
+  maxDistance     Int?     // km
+  isSearching     Boolean  @default(true)
+  showOnMap       Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([latitude, longitude])
+  @@index([skillLevel, isSearching])
+  @@map("player_profiles")
+}
+
+enum SkillLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  COMPETITIVE
+  PROFESSIONAL
+}
