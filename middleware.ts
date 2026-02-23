@@ -28,3 +28,6 @@ export const config = {
     '/((?!api|_next|_vercel|static|.*\\..*|_next/static|_next/image|favicon.ico).*)',
   ],
 };
+
+// Use Node.js runtime instead of Edge for better compatibility
+export const runtime = 'nodejs';
