@@ -4,7 +4,7 @@ import { dataProvider } from '@/lib/data/provider';
 // GET /api/clubs - List clubs with filtering
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = request.nextUrl;
     const country = searchParams.get('country');
     const city = searchParams.get('city');
 
