@@ -1,0 +1,68 @@
+{
+  "searches": [
+    {
+      "query": "roundnet club",
+      "countries": ["DE", "FR", "IT", "ES", "NL", "BE", "AT", "CH", "PL", "CZ"],
+      "language": "en",
+      "limit": 100
+    },
+    {
+      "query": "spikeball club",
+      "countries": ["DE", "FR", "IT", "ES", "NL", "BE", "AT", "CH", "PL", "CZ", "GB", "IE"],
+      "language": "en",
+      "limit": 100
+    },
+    {
+      "query": "roundnet verein",
+      "countries": ["DE", "AT", "CH"],
+      "language": "de",
+      "limit": 50
+    },
+    {
+      "query": "club roundnet",
+      "countries": ["FR", "BE", "CH"],
+      "language": "fr",
+      "limit": 50
+    },
+    {
+      "query": "spikeball verein",
+      "countries": ["DE", "AT", "CH"],
+      "language": "de",
+      "limit": 50
+    },
+    {
+      "query": "roundnet italia",
+      "countries": ["IT"],
+      "language": "it",
+      "limit": 30
+    },
+    {
+      "query": "spikeball españa",
+      "countries": ["ES"],
+      "language": "es",
+      "limit": 30
+    }
+  ],
+  "fields": [
+    "name",
+    "full_address",
+    "street",
+    "city",
+    "postal_code",
+    "country",
+    "country_code",
+    "latitude",
+    "longitude",
+    "phone",
+    "site",
+    "email",
+    "rating",
+    "reviews",
+    "photos",
+    "working_hours",
+    "description",
+    "category",
+    "place_id"
+  ],
+  "output": "data/raw/outscraper-results.json"
+}
