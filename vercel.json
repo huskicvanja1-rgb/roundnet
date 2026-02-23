@@ -1,8 +1,3 @@
 {
-  "buildCommand": "rm -rf .next && npm run build",
-  "outputDirectory": ".next",
-  "installCommand": "npm ci",
-  "env": {
-    "NEXT_PUBLIC_ENV": "production"
-  }
+  "framework": "nextjs"
 }
