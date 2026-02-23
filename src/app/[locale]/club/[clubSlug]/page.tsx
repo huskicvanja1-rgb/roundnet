@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/lib/i18n/routing';
 import { dataProvider } from '@/lib/data/provider';
@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: ClubPageProps): Promise<Metad
 
 export default async function ClubPage({ params }: ClubPageProps) {
   const locale = params.locale as Locale;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const club = await dataProvider.getClubBySlug(params.clubSlug);
 

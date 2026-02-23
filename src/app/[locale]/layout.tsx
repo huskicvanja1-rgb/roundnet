@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/lib/i18n/locales';
 import { Link } from '@/lib/i18n/routing';
@@ -31,7 +31,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   // Enable static rendering
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   // Get messages for the locale
   const messages = await getMessages();
